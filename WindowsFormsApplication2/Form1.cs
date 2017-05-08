@@ -13,6 +13,8 @@ namespace WindowsFormsApplication2
 
         public Form1()        
         {
+            int tryr = 0;
+            int tryr2 = 0;
             InitializeComponent();
             bindingSource1.DataSource = outlet;
             dataGridView1.AutoGenerateColumns = true;

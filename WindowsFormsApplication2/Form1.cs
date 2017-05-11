@@ -168,7 +168,9 @@ namespace WindowsFormsApplication2
             {
                 if (x.Trim() != "") return false;
             }
-            return true;
+            if(SearchTimeFromPicker.Text == "0:00:00" && SearchTimeToPicker.Text == "23:59:00")
+                return true;
+            return false;
         }
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

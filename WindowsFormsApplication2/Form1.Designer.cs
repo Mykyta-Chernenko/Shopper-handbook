@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication2
+﻿namespace Shopper_handbok
 {
     partial class Form1
     {
@@ -163,7 +163,7 @@
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = typeof(WindowsFormsApplication2.Base);
+            this.bindingSource1.DataSource = typeof(Base);
             // 
             // AddBtn
             // 
@@ -440,7 +440,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn specializationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn possetionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DateTimePicker SearchTimeFromPicker;
         private System.Windows.Forms.DateTimePicker SearchTimeToPicker;
         private System.Windows.Forms.ErrorProvider errorProvider1;

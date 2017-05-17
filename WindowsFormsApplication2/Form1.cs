@@ -1,26 +1,28 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using System.IO;
+using WindowsFormsApplication2;
+using Newtonsoft.Json;
 using OfficeOpenXml;
 
-namespace WindowsFormsApplication2
+namespace Shopper_handbok
 {
     public partial class Form1 : Form
     {
-        public static Base outlet = new Base();
-
-        public Form1()        
+        public static Base Outlet = new Base();
+        public static Form1 Instance;
+        public Form1()
         {
             InitializeComponent();
-            bindingSource1.DataSource = outlet;
+            bindingSource1.DataSource = Outlet;
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = bindingSource1;
             SearchTimeFromPicker.Format = DateTimePickerFormat.Time;
             SearchTimeFromPicker.ShowUpDown = true;
             SearchTimeToPicker.Format = DateTimePickerFormat.Time;
             SearchTimeToPicker.ShowUpDown = true;
+            Instance = this;
         }
         private void DeleteCompany(object sender, EventArgs e)
         {
@@ -28,11 +30,11 @@ namespace WindowsFormsApplication2
             {
                 int index = dataGridView1.CurrentRow.Index;
                 Base currentBase = (Base)bindingSource1.DataSource;
-                DialogResult dialogResult = MessageBox.Show("Are you sure of deleting company with name: " + 
-                    currentBase[index].Name, "Deleting company", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show(@"Are you sure of deleting company with name: " + 
+                    currentBase[index].Name, @"Deleting company", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    outlet.RemoveAt(outlet.IndexOf(currentBase[index].Name));
+                    Outlet.RemoveAt(Outlet.IndexOf(currentBase[index].Name));
                     currentBase.RemoveAt(index);
                     RefreshBase();
                 }
@@ -46,9 +48,9 @@ namespace WindowsFormsApplication2
             // получаем выбранный файл
             string filename = saveFileDialog1.FileName;
             // сохраняем текст в файл
-            string outletString= JsonConvert.SerializeObject(outlet);
-            System.IO.File.WriteAllText(filename+ ".txt", outletString);
-            MessageBox.Show("Base has been successfully saved");
+            string outletString= JsonConvert.SerializeObject(Outlet);
+            File.WriteAllText(filename+ ".txt", outletString);
+            MessageBox.Show(@"Base has been successfully saved");
         }
         
 
@@ -59,19 +61,19 @@ namespace WindowsFormsApplication2
             
             try {
                 string filename = openFileDialog1.FileName;
-                string fileText = System.IO.File.ReadAllText(filename);
-                outlet = JsonConvert.DeserializeObject<Base>(fileText);
+                string fileText = File.ReadAllText(filename);
+                Outlet = JsonConvert.DeserializeObject<Base>(fileText);
             }
             catch
             {
-                MessageBox.Show("File can't be opened");
+                MessageBox.Show(@"File can't be opened");
             }
-            bindingSource1.DataSource = outlet;
+            bindingSource1.DataSource = Outlet;
             RefreshBase();
         }
         private void ReturnToBase_Click(object sender, EventArgs e)
         {
-            bindingSource1.DataSource = outlet;
+            bindingSource1.DataSource = Outlet;
             RefreshBase();
         }
 
@@ -79,7 +81,7 @@ namespace WindowsFormsApplication2
         {
             Form ifrm = new AddForm();
             ifrm.ShowDialog();
-            bindingSource1.DataSource = outlet;
+            bindingSource1.DataSource = Outlet;
             RefreshBase();   
             
         }
@@ -90,9 +92,9 @@ namespace WindowsFormsApplication2
         }
         public static void Clear(params TextBoxBase[] par)
         {
-            for(int i = 0; i < par.Length; i++)
+            foreach (TextBoxBase t in par)
             {
-                par[i].Clear();
+                t.Clear();
             }
         }      
         public void RefreshBase()
@@ -104,7 +106,7 @@ namespace WindowsFormsApplication2
         private void Search(object sender, KeyEventArgs e)
         {
             Base temp = new Base();
-            foreach (Company x in outlet)
+            foreach (Company x in Outlet)
             {
                 temp.Add(x);
             }
@@ -112,15 +114,15 @@ namespace WindowsFormsApplication2
                 textSearchSpecialization.Text, textSearchPossetion.Text};
             if (LinesAreEmpty(searchLine))
             {
-                bindingSource1.DataSource = outlet;
+                bindingSource1.DataSource = Outlet;
                 return;
             }
             for (int i = 0; i < temp.Count; i++)
             {
                 if (temp.Count == 0) break;
-                Type BaseType = temp[i].GetType();
+                Type baseType = temp[i].GetType();
                 int k = 0;
-                foreach (PropertyInfo prop in BaseType.GetProperties())
+                foreach (PropertyInfo prop in baseType.GetProperties())
                 {
                     if (k < 5 && searchLine[k].Trim() == "")
                     {
@@ -147,10 +149,8 @@ namespace WindowsFormsApplication2
                     }
                     else
                     {
-                        if (((prop.GetValue(temp[i]).ToString()).ToLower().IndexOf(searchLine[k]) == -1))
+                        if (prop.GetValue(temp[i]).ToString().ToLower().IndexOf(searchLine[k], StringComparison.Ordinal) == -1)
                         {
-                            string str1 = prop.GetValue(temp[i]).ToString();
-                            string str2 = searchLine[k];
                             temp.RemoveAt(i);
                             i--;
                             break;
@@ -168,7 +168,7 @@ namespace WindowsFormsApplication2
             {
                 if (x.Trim() != "") return false;
             }
-            if(SearchTimeFromPicker.Text == "0:00:00" && SearchTimeToPicker.Text == "23:59:00")
+            if(SearchTimeFromPicker.Text == @"0:00:00" && SearchTimeToPicker.Text == @"23:59:00")
                 return true;
             return false;
         }
@@ -177,25 +177,27 @@ namespace WindowsFormsApplication2
         {
             if (dataGridView1.CurrentRow != null)
             {
-                int indexLast = outlet.Count;
-                ChangeForm ifrm = new ChangeForm();
-                ifrm.NameTxt.Text = outlet[dataGridView1.CurrentRow.Index].Name;
-                ifrm.PhoneTxt.Text = outlet[dataGridView1.CurrentRow.Index].Phone;
-                ifrm.PossetionTxt.Text = outlet[dataGridView1.CurrentRow.Index].Possetion;
-                ifrm.AdressTxt.Text = outlet[dataGridView1.CurrentRow.Index].Address;
-                ifrm.SpecializationTxt.Text = outlet[dataGridView1.CurrentRow.Index].Specialization;
-                ifrm.TimeFromPicker.Text = outlet[dataGridView1.CurrentRow.Index].TimeFrom;
-                ifrm.TimeToPicker.Text = outlet[dataGridView1.CurrentRow.Index].TimeTo;
-                ifrm.AddButton.Text = "Change";
-                ifrm.Height = 500;
-                ifrm.Width = 300;
-                ifrm.ShowDialog();
-                if (indexLast + 1 == outlet.Count)
+                int indexLast = Outlet.Count;
+                ChangeForm ifrm = new ChangeForm
                 {
-                    outlet[dataGridView1.CurrentRow.Index] = outlet[outlet.Count - 1];
-                    outlet.RemoveAt(outlet.Count - 1);
+                    NameTxt = {Text = Outlet[dataGridView1.CurrentRow.Index].Name},
+                    PhoneTxt = {Text = Outlet[dataGridView1.CurrentRow.Index].Phone},
+                    PossetionTxt = {Text = Outlet[dataGridView1.CurrentRow.Index].Possetion},
+                    AdressTxt = {Text = Outlet[dataGridView1.CurrentRow.Index].Address},
+                    SpecializationTxt = {Text = Outlet[dataGridView1.CurrentRow.Index].Specialization},
+                    TimeFromPicker = {Text = Outlet[dataGridView1.CurrentRow.Index].TimeFrom},
+                    TimeToPicker = {Text = Outlet[dataGridView1.CurrentRow.Index].TimeTo},
+                    AddButton = {Text = @"Change"},
+                    Height = 500,
+                    Width = 300
+                };
+                ifrm.ShowDialog();
+                if (indexLast + 1 == Outlet.Count)
+                {
+                    Outlet[dataGridView1.CurrentRow.Index] = Outlet[Outlet.Count - 1];
+                    Outlet.RemoveAt(Outlet.Count - 1);
                 }
-                bindingSource1.DataSource = outlet;
+                bindingSource1.DataSource = Outlet;
                 RefreshBase();
             }
         }
@@ -213,20 +215,18 @@ namespace WindowsFormsApplication2
             int count = 1;
             foreach(Company comp in ((Base)bindingSource1.DataSource))
             {
-                Type BaseType = comp.GetType();
+                Type baseType = comp.GetType();
                 
                 char k = 'A';
-                foreach (PropertyInfo prop in BaseType.GetProperties()) {
+                foreach (PropertyInfo prop in baseType.GetProperties()) {
                     ws.Cells[k + "" + count].Value = prop.GetValue(comp);
                     k++;
                 }
                 count++;                  
             }
             excel.SaveAs(new FileInfo(filename+".xlsx"));          
-            MessageBox.Show("Base has been saved");
+            MessageBox.Show(@"Base has been saved");
         }
-
-        
     }
 }
 

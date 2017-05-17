@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Shopper_handbok;
 
 namespace WindowsFormsApplication2
 {
@@ -28,7 +29,7 @@ namespace WindowsFormsApplication2
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            if (Form1.outlet.IndexOf(NameTxt.Text) == -1)
+            if (Form1.Outlet.IndexOf(NameTxt.Text) == -1)
             {
                 string TimeFrom = TimeFromPicker.Text[4] == ':' ?TimeFromPicker.Text.Substring(0, 4) 
                     :TimeFromPicker.Text.Substring(0, 5);
@@ -39,7 +40,7 @@ namespace WindowsFormsApplication2
                     errorProvider1.SetError(TimeToPicker, "End time is bigger than start");
                     return;
                 }         
-                Form1.outlet.Add(new Company(NameTxt.Text, AdressTxt.Text, PhoneTxt.Text,
+                Form1.Outlet.Add(new Company(NameTxt.Text, AdressTxt.Text, PhoneTxt.Text,
                     SpecializationTxt.Text, PossetionTxt.Text, TimeFrom, TimeTo));
                 this.Close();
             }

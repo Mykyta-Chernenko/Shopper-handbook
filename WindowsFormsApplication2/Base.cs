@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-namespace WindowsFormsApplication2
+﻿using System.Collections.Generic;
+
+namespace Shopper_handbok
 {
     public class Base : List<Company>
     {
-        public Base() : base() { }
         public int IndexOf(string n)
         {
-            for (int x = 0; x < this.Count; x++)
+            for (int x = 0; x < Count; x++)
             {
                 if (this[x].Name == n)
                     return x;

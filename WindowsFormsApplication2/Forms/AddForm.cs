@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Shopper_handbok;
+using Shopper_handbok.Model;
 
 namespace WindowsFormsApplication2
 {

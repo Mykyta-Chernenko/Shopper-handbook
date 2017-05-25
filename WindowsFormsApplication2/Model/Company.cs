@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shopper_handbok
+namespace Shopper_handbok.Model
 {
     [Serializable]
     public class Company

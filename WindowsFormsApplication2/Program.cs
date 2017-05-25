@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Shopper_handbok;
 
-namespace WindowsFormsApplication2
+namespace Shopper_handbok
 {
     static class Program
     {

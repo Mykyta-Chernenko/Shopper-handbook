@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Shopper_handbok.Model.Base">
+    <Position X="5.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Base.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopper_handbok.Model.Company">
+    <Position X="3.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAQAAAAAAAAAAAAAAAAAAQAAgAAAAACAAAAIAAAAEA=</HashCode>
+      <FileName>Model\Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shopper_handbok.MainForm">
+    <Position X="8" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>90AEAAABAiCBABJAECGAQAwCBAwEIBEAxAEAFAigQAc=</HashCode>
+      <FileName>Forms\MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

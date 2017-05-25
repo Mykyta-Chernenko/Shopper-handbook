@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using WindowsFormsApplication2;
 using Newtonsoft.Json;
 using OfficeOpenXml;
+using Shopper_handbok.Model;
 
 namespace Shopper_handbok
 {
@@ -236,6 +237,11 @@ namespace Shopper_handbok
         private void AboutBtn_Click(object sender, EventArgs e)
         {
             MessageBox.Show("The Cource on the theme \"Shopper handbook\" \n @Autor: Nikita chernneko \n PZPI-16-1 2017");
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            Search(sender, e);
         }
     }
 }

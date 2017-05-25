@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
-namespace Shopper_handbok
+namespace Shopper_handbok.Model
 {
     public class Base : List<Company>
     {

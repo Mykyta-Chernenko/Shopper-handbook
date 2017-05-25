@@ -141,12 +141,14 @@
             this.PossetionTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.PossetionTxt.FormattingEnabled = true;
             this.PossetionTxt.Items.AddRange(new object[] {
+            "-",
             "Частная",
             "Государственная"});
             this.PossetionTxt.Location = new System.Drawing.Point(121, 316);
             this.PossetionTxt.Name = "PossetionTxt";
             this.PossetionTxt.Size = new System.Drawing.Size(121, 24);
             this.PossetionTxt.TabIndex = 7;
+            this.PossetionTxt.Validating += new System.ComponentModel.CancelEventHandler(this.LineValidating);
             // 
             // TimeFromPicker
             // 
@@ -154,7 +156,7 @@
             this.TimeFromPicker.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.TimeFromPicker.Location = new System.Drawing.Point(121, 194);
             this.TimeFromPicker.Name = "TimeFromPicker";
-            this.TimeFromPicker.Size = new System.Drawing.Size(65, 22);
+            this.TimeFromPicker.Size = new System.Drawing.Size(86, 22);
             this.TimeFromPicker.TabIndex = 4;
             this.TimeFromPicker.Value = new System.DateTime(2017, 4, 27, 0, 0, 0, 0);
             // 
@@ -164,7 +166,7 @@
             this.TimeToPicker.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.TimeToPicker.Location = new System.Drawing.Point(213, 194);
             this.TimeToPicker.Name = "TimeToPicker";
-            this.TimeToPicker.Size = new System.Drawing.Size(64, 22);
+            this.TimeToPicker.Size = new System.Drawing.Size(78, 22);
             this.TimeToPicker.TabIndex = 5;
             this.TimeToPicker.Value = new System.DateTime(2017, 4, 27, 23, 59, 0, 0);
             // 
@@ -219,7 +221,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
         public System.Windows.Forms.TextBox NameTxt;
         public System.Windows.Forms.TextBox AdressTxt;
         public System.Windows.Forms.TextBox SpecializationTxt;
@@ -228,5 +229,6 @@
         public System.Windows.Forms.DateTimePicker TimeToPicker;
         public System.Windows.Forms.MaskedTextBox PhoneTxt;
         public System.Windows.Forms.Button AddButton;
+        public System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

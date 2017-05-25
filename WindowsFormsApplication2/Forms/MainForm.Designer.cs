@@ -1,6 +1,6 @@
 ﻿namespace Shopper_handbok
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -63,6 +63,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SaveExcelBtn = new System.Windows.Forms.Button();
             this.SearchBtn = new System.Windows.Forms.Button();
+            this.AboutBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -163,12 +164,12 @@
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = typeof(Base);
+            this.bindingSource1.DataSource = typeof(Shopper_handbok.Base);
             // 
             // AddBtn
             // 
             this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.AddBtn.Location = new System.Drawing.Point(2, 198);
+            this.AddBtn.Location = new System.Drawing.Point(2, 240);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(224, 98);
             this.AddBtn.TabIndex = 8;
@@ -313,7 +314,7 @@
             // 
             // returnToBase
             // 
-            this.returnToBase.Location = new System.Drawing.Point(128, 111);
+            this.returnToBase.Location = new System.Drawing.Point(128, 23);
             this.returnToBase.Name = "returnToBase";
             this.returnToBase.Size = new System.Drawing.Size(98, 71);
             this.returnToBase.TabIndex = 38;
@@ -324,22 +325,22 @@
             // SearchTimeFromPicker
             // 
             this.SearchTimeFromPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.SearchTimeFromPicker.Location = new System.Drawing.Point(1139, 41);
+            this.SearchTimeFromPicker.Location = new System.Drawing.Point(1079, 41);
             this.SearchTimeFromPicker.Name = "SearchTimeFromPicker";
-            this.SearchTimeFromPicker.Size = new System.Drawing.Size(95, 36);
+            this.SearchTimeFromPicker.Size = new System.Drawing.Size(155, 36);
             this.SearchTimeFromPicker.TabIndex = 6;
             this.SearchTimeFromPicker.Value = new System.DateTime(2017, 4, 29, 0, 0, 0, 0);
-            this.SearchTimeFromPicker.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Search);
+            this.SearchTimeFromPicker.ValueChanged += new System.EventHandler(this.Search);
             // 
             // SearchTimeToPicker
             // 
             this.SearchTimeToPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.SearchTimeToPicker.Location = new System.Drawing.Point(1240, 41);
             this.SearchTimeToPicker.Name = "SearchTimeToPicker";
-            this.SearchTimeToPicker.Size = new System.Drawing.Size(98, 36);
+            this.SearchTimeToPicker.Size = new System.Drawing.Size(160, 36);
             this.SearchTimeToPicker.TabIndex = 7;
             this.SearchTimeToPicker.Value = new System.DateTime(2017, 4, 29, 23, 59, 0, 0);
-            this.SearchTimeToPicker.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Search);
+            this.SearchTimeToPicker.ValueChanged += new System.EventHandler(this.Search);
             // 
             // errorProvider1
             // 
@@ -375,12 +376,23 @@
             this.SearchBtn.Text = "Search";
             this.SearchBtn.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // AboutBtn
+            // 
+            this.AboutBtn.Location = new System.Drawing.Point(8, 179);
+            this.AboutBtn.Name = "AboutBtn";
+            this.AboutBtn.Size = new System.Drawing.Size(114, 55);
+            this.AboutBtn.TabIndex = 40;
+            this.AboutBtn.Text = "About the program";
+            this.AboutBtn.UseVisualStyleBackColor = true;
+            this.AboutBtn.Click += new System.EventHandler(this.AboutBtn_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1509, 681);
+            this.Controls.Add(this.AboutBtn);
             this.Controls.Add(this.SaveExcelBtn);
             this.Controls.Add(this.SearchTimeToPicker);
             this.Controls.Add(this.SearchTimeFromPicker);
@@ -404,9 +416,8 @@
             this.Controls.Add(this.dataGridView1);
             this.MaximumSize = new System.Drawing.Size(1530, 730);
             this.MinimumSize = new System.Drawing.Size(200, 200);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "MainForm";
+            this.Text = "Shopper handbook";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -429,12 +440,9 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textSearchPossetion;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button open;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button returnToBase;
-        private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
@@ -447,6 +455,10 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button SaveExcelBtn;
         private System.Windows.Forms.Button SearchBtn;
+        public System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        public System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Button AboutBtn;
     }
 }
 

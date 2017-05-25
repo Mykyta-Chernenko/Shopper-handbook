@@ -1,14 +1,17 @@
-﻿namespace Shopper_handbok
+﻿using System;
+
+namespace Shopper_handbok
 {
+    [Serializable]
     public class Company
     {
         public string Name { get;  set; }
         public string Address { get;  set; }
         public string Phone { get;  set; }
-        public string Specialization { get;  set; }
-        public string Possetion { get;  set; }
-        public string TimeFrom { get;  set; }
-        public string TimeTo { get; set; }
+        public string Specialization { get;  set; } // Специализация
+        public string Possetion { get;  set; } // Форма владения 
+        public string TimeFrom { get;  set; } // Начало рабочего дня
+        public string TimeTo { get; set; } // Конец рабочего дня
         public Company(string n, string a, string p, string s, string pos, string tf, string tt)
         {
             Name = n;

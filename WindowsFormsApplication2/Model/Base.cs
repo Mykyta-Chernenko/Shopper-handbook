@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Shopper_handbok
 {
@@ -12,6 +13,7 @@ namespace Shopper_handbok
                     return x;
             }
             return -1;
+            
         }
     }
     

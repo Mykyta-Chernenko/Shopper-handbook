@@ -2,12 +2,11 @@
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using WindowsFormsApplication2;
 using Newtonsoft.Json;
 using OfficeOpenXml;
 using Shopper_handbok.Model;
 
-namespace Shopper_handbok
+namespace Shopper_handbok.Forms
 {
     public partial class MainForm : Form
     {
@@ -21,9 +20,7 @@ namespace Shopper_handbok
             
             //Привязка данных
             bindingSource1.DataSource = Outlet;
-            dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = bindingSource1;
-             
             SearchTimeFromPicker.Format = DateTimePickerFormat.Time;
             SearchTimeFromPicker.ShowUpDown = true;
             SearchTimeToPicker.Format = DateTimePickerFormat.Time;
@@ -71,27 +68,34 @@ namespace Shopper_handbok
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-            string filename = saveFileDialog1.FileName;
-            ExcelPackage excel = new ExcelPackage();
-
-            ExcelWorksheet ws = excel.Workbook.Worksheets.Add("MyWorksheet");
-
-            ws.Cells["A1"].Value = "ID Number";
-            int count = 1;
-            foreach (Company comp in ((Base)bindingSource1.DataSource))
+            try
             {
-                Type baseType = comp.GetType();
+                string filename = saveFileDialog1.FileName;
+                ExcelPackage excel = new ExcelPackage();
 
-                char k = 'A';
-                foreach (PropertyInfo prop in baseType.GetProperties())
+                ExcelWorksheet ws = excel.Workbook.Worksheets.Add("MyWorksheet");
+
+                ws.Cells["A1"].Value = "ID Number";
+                int count = 1;
+                foreach (Company comp in ((Base) bindingSource1.DataSource))
                 {
-                    ws.Cells[k + "" + count].Value = prop.GetValue(comp);
-                    k++;
+                    Type baseType = comp.GetType();
+
+                    char k = 'A';
+                    foreach (PropertyInfo prop in baseType.GetProperties())
+                    {
+                        ws.Cells[k + "" + count].Value = prop.GetValue(comp);
+                        k++;
+                    }
+                    count++;
                 }
-                count++;
+                excel.SaveAs(new FileInfo(filename + ".xlsx"));
+                MessageBox.Show(@"Base has been saved");
             }
-            excel.SaveAs(new FileInfo(filename + ".xlsx"));
-            MessageBox.Show(@"Base has been saved");
+            catch
+            {
+                MessageBox.Show(@"Base hasn't been saved in xlsx");
+            }
         }
         
         // Возвращение вида программы к основной базе
@@ -236,13 +240,51 @@ namespace Shopper_handbok
 
         private void AboutBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The Cource on the theme \"Shopper handbook\" \n @Autor: Nikita chernneko \n PZPI-16-1 2017");
+            MessageBox.Show("The Cource on the theme \"Shopper handbook\" \n " +
+                            "@Autor: Nikita chernneko " +
+                            "\n PZPI-16-1 2017");
         }
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             Search(sender, e);
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+        // Сортировка при нажатии на хедер 
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string propName = (dataGridView1.Columns[e.ColumnIndex].HeaderText); // Получение названия свойства класса
+            Base companies = ((Base) bindingSource1.DataSource); // Получение базы 
+            if (companies.Count >= 2) // Проверка нужно ли сортировать
+            {
+                Company firstElement = companies[0];
+                Company lastElement = companies[companies.Count -1];
+                int sortOrder = DataGriedComparer(firstElement, lastElement, propName); // Получение текущего порядка для дальнейшего изменения 
+                companies.Sort((first, second) =>sortOrder * DataGriedComparer(first, second, propName));
+                RefreshBase();
+            }
+            
+            
+        }
+
+        public int DataGriedComparer(Company first, Company second, string propName)
+        {
+            string firstValue = (string) first.GetType().GetProperty(propName).GetValue(first);
+            string secondValue = (string) second.GetType().GetProperty(propName).GetValue(second);
+            return firstValue.CompareTo(secondValue);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+                Save_click(sender, null);
+        }
+
+        
     }
 }
 

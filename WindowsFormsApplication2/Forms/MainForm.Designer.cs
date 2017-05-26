@@ -1,6 +1,4 @@
-﻿using Shopper_handbok.Model;
-
-namespace Shopper_handbok
+﻿namespace Shopper_handbok.Forms
 {
     partial class MainForm
     {
@@ -34,7 +32,6 @@ namespace Shopper_handbok
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.AddBtn = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
@@ -58,60 +55,23 @@ namespace Shopper_handbok
             this.SearchTimeToPicker = new System.Windows.Forms.DateTimePicker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.specializationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.possetionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeFromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeToDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SaveExcelBtn = new System.Windows.Forms.Button();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.AboutBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeight = 40;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.DataSource = this.bindingSource1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.Location = new System.Drawing.Point(232, 78);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1276, 599);
-            this.dataGridView1.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.dataGridView1, "Doubleclick for editing");
-            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             // 
             // AddBtn
             // 
@@ -138,7 +98,7 @@ namespace Shopper_handbok
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label9.Location = new System.Drawing.Point(302, 3);
+            this.label9.Location = new System.Drawing.Point(268, 3);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(81, 29);
             this.label9.TabIndex = 35;
@@ -147,7 +107,7 @@ namespace Shopper_handbok
             // textSearchName
             // 
             this.textSearchName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.textSearchName.Location = new System.Drawing.Point(307, 35);
+            this.textSearchName.Location = new System.Drawing.Point(249, 36);
             this.textSearchName.Name = "textSearchName";
             this.textSearchName.Size = new System.Drawing.Size(100, 36);
             this.textSearchName.TabIndex = 1;
@@ -157,7 +117,7 @@ namespace Shopper_handbok
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label10.Location = new System.Drawing.Point(435, 3);
+            this.label10.Location = new System.Drawing.Point(408, 3);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(106, 29);
             this.label10.TabIndex = 33;
@@ -166,7 +126,7 @@ namespace Shopper_handbok
             // textSearchAddress
             // 
             this.textSearchAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.textSearchAddress.Location = new System.Drawing.Point(433, 35);
+            this.textSearchAddress.Location = new System.Drawing.Point(406, 35);
             this.textSearchAddress.Name = "textSearchAddress";
             this.textSearchAddress.Size = new System.Drawing.Size(100, 36);
             this.textSearchAddress.TabIndex = 2;
@@ -176,7 +136,7 @@ namespace Shopper_handbok
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label11.Location = new System.Drawing.Point(558, 3);
+            this.label11.Location = new System.Drawing.Point(601, 3);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 29);
             this.label11.TabIndex = 31;
@@ -185,7 +145,7 @@ namespace Shopper_handbok
             // textSearchPhone
             // 
             this.textSearchPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.textSearchPhone.Location = new System.Drawing.Point(563, 35);
+            this.textSearchPhone.Location = new System.Drawing.Point(606, 35);
             this.textSearchPhone.Name = "textSearchPhone";
             this.textSearchPhone.Size = new System.Drawing.Size(100, 36);
             this.textSearchPhone.TabIndex = 3;
@@ -195,7 +155,7 @@ namespace Shopper_handbok
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label12.Location = new System.Drawing.Point(906, 3);
+            this.label12.Location = new System.Drawing.Point(960, 3);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(180, 29);
             this.label12.TabIndex = 29;
@@ -204,7 +164,7 @@ namespace Shopper_handbok
             // textSearchSpecialization
             // 
             this.textSearchSpecialization.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.textSearchSpecialization.Location = new System.Drawing.Point(756, 36);
+            this.textSearchSpecialization.Location = new System.Drawing.Point(803, 36);
             this.textSearchSpecialization.Name = "textSearchSpecialization";
             this.textSearchSpecialization.Size = new System.Drawing.Size(100, 36);
             this.textSearchSpecialization.TabIndex = 4;
@@ -214,7 +174,7 @@ namespace Shopper_handbok
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label13.Location = new System.Drawing.Point(702, 3);
+            this.label13.Location = new System.Drawing.Point(749, 3);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(171, 29);
             this.label13.TabIndex = 27;
@@ -223,7 +183,7 @@ namespace Shopper_handbok
             // textSearchPossetion
             // 
             this.textSearchPossetion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.textSearchPossetion.Location = new System.Drawing.Point(938, 34);
+            this.textSearchPossetion.Location = new System.Drawing.Point(980, 35);
             this.textSearchPossetion.Name = "textSearchPossetion";
             this.textSearchPossetion.Size = new System.Drawing.Size(100, 36);
             this.textSearchPossetion.TabIndex = 5;
@@ -233,7 +193,7 @@ namespace Shopper_handbok
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label14.Location = new System.Drawing.Point(1156, 9);
+            this.label14.Location = new System.Drawing.Point(1236, 9);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(119, 29);
             this.label14.TabIndex = 25;
@@ -261,7 +221,7 @@ namespace Shopper_handbok
             // 
             // returnToBase
             // 
-            this.returnToBase.Location = new System.Drawing.Point(128, 23);
+            this.returnToBase.Location = new System.Drawing.Point(128, 80);
             this.returnToBase.Name = "returnToBase";
             this.returnToBase.Size = new System.Drawing.Size(98, 71);
             this.returnToBase.TabIndex = 38;
@@ -272,7 +232,7 @@ namespace Shopper_handbok
             // SearchTimeFromPicker
             // 
             this.SearchTimeFromPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.SearchTimeFromPicker.Location = new System.Drawing.Point(1079, 41);
+            this.SearchTimeFromPicker.Location = new System.Drawing.Point(1159, 41);
             this.SearchTimeFromPicker.Name = "SearchTimeFromPicker";
             this.SearchTimeFromPicker.Size = new System.Drawing.Size(155, 36);
             this.SearchTimeFromPicker.TabIndex = 6;
@@ -282,7 +242,7 @@ namespace Shopper_handbok
             // SearchTimeToPicker
             // 
             this.SearchTimeToPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.SearchTimeToPicker.Location = new System.Drawing.Point(1240, 41);
+            this.SearchTimeToPicker.Location = new System.Drawing.Point(1320, 41);
             this.SearchTimeToPicker.Name = "SearchTimeToPicker";
             this.SearchTimeToPicker.Size = new System.Drawing.Size(160, 36);
             this.SearchTimeToPicker.TabIndex = 7;
@@ -303,6 +263,124 @@ namespace Shopper_handbok
             this.toolTip1.ReshowDelay = 1000;
             this.toolTip1.ShowAlways = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeight = 40;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn,
+            this.addressDataGridViewTextBoxColumn,
+            this.phoneDataGridViewTextBoxColumn,
+            this.specializationDataGridViewTextBoxColumn,
+            this.possetionDataGridViewTextBoxColumn,
+            this.timeFromDataGridViewTextBoxColumn,
+            this.timeToDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.companyBindingSource;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.Location = new System.Drawing.Point(232, 78);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1276, 599);
+            this.dataGridView1.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.dataGridView1, "Doubleclick for editing");
+            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
+            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            this.addressDataGridViewTextBoxColumn.Width = 135;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.phoneDataGridViewTextBoxColumn.Width = 115;
+            // 
+            // specializationDataGridViewTextBoxColumn
+            // 
+            this.specializationDataGridViewTextBoxColumn.DataPropertyName = "Specialization";
+            this.specializationDataGridViewTextBoxColumn.HeaderText = "Specialization";
+            this.specializationDataGridViewTextBoxColumn.Name = "specializationDataGridViewTextBoxColumn";
+            this.specializationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.specializationDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // possetionDataGridViewTextBoxColumn
+            // 
+            this.possetionDataGridViewTextBoxColumn.DataPropertyName = "Possetion";
+            this.possetionDataGridViewTextBoxColumn.HeaderText = "Possetion";
+            this.possetionDataGridViewTextBoxColumn.Name = "possetionDataGridViewTextBoxColumn";
+            this.possetionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.possetionDataGridViewTextBoxColumn.Width = 154;
+            // 
+            // timeFromDataGridViewTextBoxColumn
+            // 
+            this.timeFromDataGridViewTextBoxColumn.DataPropertyName = "TimeFrom";
+            this.timeFromDataGridViewTextBoxColumn.HeaderText = "TimeFrom";
+            this.timeFromDataGridViewTextBoxColumn.Name = "timeFromDataGridViewTextBoxColumn";
+            this.timeFromDataGridViewTextBoxColumn.ReadOnly = true;
+            this.timeFromDataGridViewTextBoxColumn.Width = 158;
+            // 
+            // timeToDataGridViewTextBoxColumn
+            // 
+            this.timeToDataGridViewTextBoxColumn.DataPropertyName = "TimeTo";
+            this.timeToDataGridViewTextBoxColumn.HeaderText = "TimeTo";
+            this.timeToDataGridViewTextBoxColumn.Name = "timeToDataGridViewTextBoxColumn";
+            this.timeToDataGridViewTextBoxColumn.ReadOnly = true;
+            this.timeToDataGridViewTextBoxColumn.Width = 128;
+            // 
+            // companyBindingSource
+            // 
+            this.companyBindingSource.DataSource = typeof(Shopper_handbok.Model.Company);
+            // 
             // SaveExcelBtn
             // 
             this.SaveExcelBtn.Location = new System.Drawing.Point(8, 140);
@@ -316,7 +394,7 @@ namespace Shopper_handbok
             // SearchBtn
             // 
             this.SearchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.SearchBtn.Location = new System.Drawing.Point(232, 35);
+            this.SearchBtn.Location = new System.Drawing.Point(157, 35);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(69, 37);
             this.SearchBtn.TabIndex = 20;
@@ -366,9 +444,12 @@ namespace Shopper_handbok
             this.MinimumSize = new System.Drawing.Size(200, 200);
             this.Name = "MainForm";
             this.Text = "Shopper handbook";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,15 +472,10 @@ namespace Shopper_handbok
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button open;
         private System.Windows.Forms.Button returnToBase;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn specializationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn possetionDataGridViewTextBoxColumn;
+
         private System.Windows.Forms.DateTimePicker SearchTimeFromPicker;
         private System.Windows.Forms.DateTimePicker SearchTimeToPicker;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button SaveExcelBtn;
         private System.Windows.Forms.Button SearchBtn;
@@ -407,6 +483,15 @@ namespace Shopper_handbok
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
         public System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button AboutBtn;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource companyBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn specializationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn possetionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timeFromDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timeToDataGridViewTextBoxColumn;
     }
 }
 

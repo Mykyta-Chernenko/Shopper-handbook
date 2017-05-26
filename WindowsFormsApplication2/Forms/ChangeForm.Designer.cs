@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication2
+﻿namespace Shopper_handbok.Forms
 {
     partial class ChangeForm
     {

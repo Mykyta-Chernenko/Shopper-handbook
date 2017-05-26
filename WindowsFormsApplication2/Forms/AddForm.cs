@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Shopper_handbok;
 using Shopper_handbok.Model;
 
-namespace WindowsFormsApplication2
+namespace Shopper_handbok.Forms
 {
     public partial class AddForm : Form
     {
@@ -34,22 +26,30 @@ namespace WindowsFormsApplication2
             if (MainForm.Outlet.IndexOf(NameTxt.Text) == -1)
             {
                 // Проверка введеного формата времени 
-                string TimeFrom = TimeFromPicker.Text[4] == ':' ?TimeFromPicker.Text.Substring(0, 4) 
+                string timeFrom = TimeFromPicker.Text[4] == ':' ?TimeFromPicker.Text.Substring(0, 4) 
                     :TimeFromPicker.Text.Substring(0, 5);
-                string TimeTo = TimeToPicker.Text[4] == ':' ? TimeToPicker.Text.Substring(0, 4)
+                string timeTo = TimeToPicker.Text[4] == ':' ? TimeToPicker.Text.Substring(0, 4)
                     : TimeToPicker.Text.Substring(0, 5);
 
 
-                if (!IsTimeRight(TimeFrom, TimeTo))
+                if (!IsTimeRight(timeFrom, timeTo))
                 {
                     errorProvider1.SetError(TimeToPicker, "End time is bigger than start");
                     return;
                 }
-                if(LinesAreFilled(new string[]{NameTxt.Text, AdressTxt.Text, PhoneTxt.Text,
-                    SpecializationTxt.Text, PossetionTxt.Text, TimeFrom, TimeTo }))
-                MainForm.Outlet.Add(new Company(NameTxt.Text, AdressTxt.Text, PhoneTxt.Text,
-                    SpecializationTxt.Text, PossetionTxt.Text, TimeFrom, TimeTo));
-                this.Close();
+                if (LinesAreFilled(new string[]
+                    {
+                        NameTxt.Text, AdressTxt.Text, PhoneTxt.Text,
+                        SpecializationTxt.Text, PossetionTxt.Text, timeFrom, timeTo
+                    }))
+                {
+
+                    MainForm.Outlet.Add(new Company(NameTxt.Text, AdressTxt.Text, PhoneTxt.Text,
+                        SpecializationTxt.Text, PossetionTxt.Text, timeFrom, timeTo));
+                    this.Close();
+                }
+                else 
+                    errorProvider1.SetError(AddButton, "Not all lines are filled");
             }
             else
             {
@@ -61,29 +61,41 @@ namespace WindowsFormsApplication2
         {
             return DateTime.Parse( TimeFrom)  < DateTime.Parse( TimeTo);
         }
+
         public bool LineChecker(string text)
         {
-            return ((text.Length > 0 && text.Length < 20 && text[0] != '-') || (text.Length == 1 && text[0] == '-')) ;
+            return (((text.Length > 0 && text.Length < 20 && text[0] != '-') || (text.Length == 1 && text[0] == '-'))
+                    && NotAllNumbers(text));
         }
 
+        public bool NotAllNumbers(string text)
+        {
+            for (int i = 0; i < text.Length; i++)
+            {
+                if ((int)text[i] < 48 || (int)text[i] > 57)
+                    return true;
+            }
+            return false;
+        }
         private void LineValidating(object sender, CancelEventArgs e)
         {
             Control s = (Control)sender;
             e.Cancel = !LineChecker(s.Text);
-            string textError = e.Cancel ? "Line is empty or too large(fill \"-\" instead of space)" : "";
+            string textError = e.Cancel ? "Line is empty or too large(fill \"-\" instead of space)" +
+                                          " \n Line can't contaion only numbers": "";
             errorProvider1.SetError((Control)sender, textError);
         }
 
         private void PhoneTxt_Validating(object sender, CancelEventArgs e)
         {
 
-            e.Cancel = !(PhoneTxt.MaskCompleted && PhoneTxt.Text.Length >= 8 && PhoneTxt.Text.Length <= 12);
+            e.Cancel = !(PhoneTxt.MaskCompleted);
             string textError = e.Cancel ? "Wrong number" : "";
             errorProvider1.SetError((Control)sender, textError);
         }
 
         // Проверка полей ввода на пустоту
-        private bool LinesAreFilled(string[] fields)
+        public bool LinesAreFilled(string[] fields)
         {
             foreach(var line in fields)
             {
@@ -91,6 +103,14 @@ namespace WindowsFormsApplication2
                     return false;
             }
             return true;
+        }
+
+        private void KeyDownValidation(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                AddButton_Click(sender, null);
+            else if (e.KeyCode == Keys.Escape)
+                this.Close();
         }
     }
 }

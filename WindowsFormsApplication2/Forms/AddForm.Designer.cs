@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication2
+﻿namespace Shopper_handbok.Forms
 {
     partial class AddForm
     {
@@ -62,6 +62,7 @@
             this.NameTxt.Name = "NameTxt";
             this.NameTxt.Size = new System.Drawing.Size(100, 22);
             this.NameTxt.TabIndex = 1;
+            this.NameTxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownValidation);
             this.NameTxt.Validating += new System.ComponentModel.CancelEventHandler(this.LineValidating);
             // 
             // label5
@@ -79,6 +80,7 @@
             this.AdressTxt.Name = "AdressTxt";
             this.AdressTxt.Size = new System.Drawing.Size(100, 22);
             this.AdressTxt.TabIndex = 2;
+            this.AdressTxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownValidation);
             this.AdressTxt.Validating += new System.ComponentModel.CancelEventHandler(this.LineValidating);
             // 
             // label4
@@ -105,6 +107,7 @@
             this.SpecializationTxt.Name = "SpecializationTxt";
             this.SpecializationTxt.Size = new System.Drawing.Size(100, 22);
             this.SpecializationTxt.TabIndex = 6;
+            this.SpecializationTxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownValidation);
             this.SpecializationTxt.Validating += new System.ComponentModel.CancelEventHandler(this.LineValidating);
             // 
             // label2
@@ -148,6 +151,7 @@
             this.PossetionTxt.Name = "PossetionTxt";
             this.PossetionTxt.Size = new System.Drawing.Size(121, 24);
             this.PossetionTxt.TabIndex = 7;
+            this.PossetionTxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownValidation);
             this.PossetionTxt.Validating += new System.ComponentModel.CancelEventHandler(this.LineValidating);
             // 
             // TimeFromPicker
@@ -159,6 +163,7 @@
             this.TimeFromPicker.Size = new System.Drawing.Size(86, 22);
             this.TimeFromPicker.TabIndex = 4;
             this.TimeFromPicker.Value = new System.DateTime(2017, 4, 27, 0, 0, 0, 0);
+            this.TimeFromPicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownValidation);
             // 
             // TimeToPicker
             // 
@@ -169,6 +174,7 @@
             this.TimeToPicker.Size = new System.Drawing.Size(78, 22);
             this.TimeToPicker.TabIndex = 5;
             this.TimeToPicker.Value = new System.DateTime(2017, 4, 27, 23, 59, 0, 0);
+            this.TimeToPicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownValidation);
             // 
             // errorProvider1
             // 
@@ -178,11 +184,12 @@
             // 
             this.PhoneTxt.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
             this.PhoneTxt.Location = new System.Drawing.Point(121, 139);
-            this.PhoneTxt.Mask = "0000000000";
+            this.PhoneTxt.Mask = "000000000099";
             this.PhoneTxt.Name = "PhoneTxt";
             this.PhoneTxt.RejectInputOnFirstFailure = true;
             this.PhoneTxt.Size = new System.Drawing.Size(100, 22);
             this.PhoneTxt.TabIndex = 3;
+            this.PhoneTxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownValidation);
             this.PhoneTxt.Validating += new System.ComponentModel.CancelEventHandler(this.PhoneTxt_Validating);
             // 
             // AddForm
@@ -207,6 +214,7 @@
             this.Name = "AddForm";
             this.Text = "AddForm";
             this.Load += new System.EventHandler(this.AddForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownValidation);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -19,8 +19,14 @@ namespace Shopper_handbok.Model
             Phone = p;
             Specialization = s;
             Possetion = pos;
-            TimeFrom = tf;
-            TimeTo = tt;
+            if (tf != null && tf.Length == 4)
+                TimeFrom = "0" +  tf;
+            else
+                TimeFrom = tf;
+            if (tt != null && tt.Length == 4)
+                TimeTo = "0" +  tt;
+            else
+                TimeTo =  tt;
         }
     }
 }

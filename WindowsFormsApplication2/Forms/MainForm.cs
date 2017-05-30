@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using OfficeOpenXml;
 using Shopper_handbok.Model;
+using System.Collections.Generic;
 
 namespace Shopper_handbok.Forms
 {
@@ -261,15 +262,21 @@ namespace Shopper_handbok.Forms
             Base companies = ((Base) bindingSource1.DataSource); // Получение базы 
             if (companies.Count >= 2) // Проверка нужно ли сортировать
             {
-                Company firstElement = companies[0];
-                Company lastElement = companies[companies.Count -1];
-                int sortOrder = DataGriedComparer(firstElement, lastElement, propName); // Получение текущего порядка для дальнейшего изменения 
+                int sortOrder = 0;
+                for (int i = 0; i < companies.Count - 1 && sortOrder == 0; i++)
+                {
+                    Company firstElement = companies[i];
+                    Company lastElement = companies[i + 1];
+                    sortOrder = DataGriedComparer(firstElement, lastElement, propName); // Получение текущего порядка для дальнейшего изменения 
+                }
+                
                 companies.Sort((first, second) =>sortOrder * DataGriedComparer(first, second, propName));
                 RefreshBase();
             }
             
             
         }
+        
 
         public int DataGriedComparer(Company first, Company second, string propName)
         {
@@ -286,5 +293,6 @@ namespace Shopper_handbok.Forms
 
         
     }
+   
 }
 
